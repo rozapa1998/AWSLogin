@@ -14,11 +14,22 @@ const FormComponent = () => {
                 nombre: nombredata,
                 email: emaildata
             })
-            console.log("Documento guardado con id: " + docRef.id);
+        
+            //Success alert
+            setAlertS(false)
+
+            setTimeout(() => {
+                setAlertS(true)
+            }, 3000);
     
-            console.log("Guardado en DB")
         }catch (e){
-            console.log("Error")
+            
+            //Error alert
+            setAlertD(false)
+
+            setTimeout(() => {
+                setAlertD(true)
+            }, 3000);
         }
         
     }
@@ -26,6 +37,8 @@ const FormComponent = () => {
     //Inicializando estado
     const [Email, setEmail] = useState("")
     const [Nombre, setNombre] = useState("")
+    const [alertS, setAlertS] = useState(true)
+    const [alertD, setAlertD] = useState(true)
 
     
     //Funcion Handler
@@ -42,9 +55,8 @@ const FormComponent = () => {
         
         //Seteamos Nombre del usuario
         setNombre(NombreUser)
-
-        console.log("Nombre: ",Nombre, " ", "Email: ",Email)
-
+        
+        //Guardamos en BD
         NuevaEntrada(Nombre,Email)
         
     }
@@ -78,6 +90,8 @@ const FormComponent = () => {
                 </Card>
             </div>
         </div>
+        {alertS ? true : <div class="alert alert-success ms-3 me-3 mt-5 fixed-bottom" role="alert">¡Felicitaciones  <strong>dentro de las 24hs</strong> llegara el mail a tu <strong>casilla de correo</strong>!</div>}
+        {alertD ? true : <div class="alert alert-danger ms-3 me-3 mt-5 fixed-bottom" role="alert">Algo salio mal...</div>}
     </div>
     
   )

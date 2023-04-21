@@ -1,6 +1,7 @@
 import './App.css'
 import FormComponent from './components/FormComponent'
 import Home from './components/Home'
+import TutorialComponent from './components/TutorialComponent'
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
         <div className='row'>
           <Home/>
           <FormComponent/>
+          <TutorialComponent/>
         </div>
       </div>
     </div>

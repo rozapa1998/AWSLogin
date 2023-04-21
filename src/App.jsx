@@ -1,20 +1,22 @@
 import './App.css'
-import FormComponent from './components/FormComponent'
+import AdminComponent from './components/AdminComponent'
 import Home from './components/Home'
-import TutorialComponent from './components/TutorialComponent'
+import LogIn from './components/LogIn'
+import NavBar from './components/NavBar'
+import { BrowserRouter as Router, Route , Routes as Switch } from 'react-router-dom'
 
 function App() {
 
   return (
-    <div className="App">
-      <div className='container'>
-        <div className='row'>
-          <Home/>
-          <FormComponent/>
-          <TutorialComponent/>
-        </div>
-      </div>
-    </div>
+    <Router>
+        <NavBar/>
+            <Switch>
+              <Route path='/AdminLoggin' element={<LogIn/>}/>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/AdminInterface' element={<AdminComponent/>}/>
+            </Switch>
+    </Router>
+    
   )
 }
 

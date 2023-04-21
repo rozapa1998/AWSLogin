@@ -5,7 +5,7 @@ const TutorialComponent = () => {
     <div className='container'>
         <div className='row'>
             <div className='mt-5'>
-                <iframe className='col-12' width="1280" height="720" src="https://www.youtube.com/embed/wYzLzXVeosw" title="AWS ACTIVACION CUENTAS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe className='col-12' width="1280" height="720" src="https://www.youtube.com/embed/wYzLzXVeosw" title="AWS ACTIVACION CUENTAS" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
             </div>
         </div>
     </div>

@@ -12,7 +12,8 @@ const FormComponent = () => {
         try{
             const docRef = await addDoc(collection(db, "usuarios"),{
                 nombre: nombredata,
-                email: emaildata
+                email: emaildata,
+                ingresado: false
             })
         
             //Success alert

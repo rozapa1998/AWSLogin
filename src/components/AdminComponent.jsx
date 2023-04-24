@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react'
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import db from './firebase';
 import { collection , getDocs } from 'firebase/firestore/lite';
 import UserActivationCard from './view/UserActivationCard';
@@ -10,17 +10,17 @@ const AdminComponent = () => {
 
     //Datos Firebase
     async function getUsuarios(db) {
+      let dbNew=[]
         const usuarioCol = collection(db, 'usuarios');
         const usuarioSnapshot = await getDocs(usuarioCol);
-        const usuarioList = usuarioSnapshot.docs.map(doc => doc.data());
-        return setData(usuarioList)
+        const usuarioList = usuarioSnapshot.docs.forEach( doc => {
+          dbNew.push({"id":doc.id,...doc.data()})
+          setData(dbNew)
+        })
       }
 
       useEffect(() => {
         getUsuarios(db)
-        return () => {
-          console.log("cargando data")
-        }
       }, [])
       
 
@@ -36,6 +36,7 @@ const AdminComponent = () => {
             return(
               <UserActivationCard
               key={item.id}
+              id={item.id}
               name={item.nombre}
               email={item.email}
               activated={item.ingresado}

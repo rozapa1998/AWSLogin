@@ -9,16 +9,15 @@ const FormComponent = () => {
 
     //FIREBASE
     async function NuevaEntrada (nombredata, emaildata) {
-        
+        let horaDate = new Date().toLocaleString('en-GB', {
+            hour12: false,
+        })
         try{
-            //Id random
-            let idGen = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-            
             const docRef = await addDoc(collection(db, "usuarios"),{
                 nombre: nombredata,
                 email: emaildata,
                 ingresado: false,
-                id: idGen
+                hora:  horaDate
             })
         
             //Success alert
@@ -45,6 +44,8 @@ const FormComponent = () => {
     const [Nombre, setNombre] = useState("")
     const [alertS, setAlertS] = useState(true)
     const [alertD, setAlertD] = useState(true)
+
+   
 
     
     //Funcion Handler
@@ -96,8 +97,8 @@ const FormComponent = () => {
                 </Card>
             </div>
         </div>
-        {alertS ? true : <div class="alert alert-success ms-3 me-3 mt-5 fixed-bottom" role="alert">¡Felicitaciones  <strong>dentro de las 24hs</strong> llegara el mail a tu <strong>casilla de correo</strong>!</div>}
-        {alertD ? true : <div class="alert alert-danger ms-3 me-3 mt-5 fixed-bottom" role="alert">Algo salio mal...</div>}
+        {alertS ? true : <div className="alert alert-success ms-3 me-3 mt-5 fixed-bottom" role="alert">¡Felicitaciones  <strong>dentro de las 24hs</strong> llegara el mail a tu <strong>casilla de correo</strong>!</div>}
+        {alertD ? true : <div className="alert alert-danger ms-3 me-3 mt-5 fixed-bottom" role="alert">Algo salio mal...</div>}
     </div>
     
   )

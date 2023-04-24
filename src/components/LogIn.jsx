@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form , Card , Container, Row, Col, Button } from 'react-bootstrap'
+import { useNavigate } from "react-router-dom"
 
 const LogIn = () => {
   
@@ -8,10 +9,11 @@ const LogIn = () => {
     
     let usuario = "Rozg98"
     let password = "12345"
+    const navigate = useNavigate()
 
-    const HandlerLogIn = (u,p) => {
-        if( u === User && p === Pass){
-            location.replace('https://awsacademyteclab.netlify.app/AdminInterface');
+    const HandlerLogIn = () => {
+        if( usuario === User && password === Pass){
+            return navigate("/AdminInterface")
         }
     }
 
@@ -31,7 +33,7 @@ const LogIn = () => {
                                 <Form.Control type="password" value={Pass} onChange={e => setPass(e.target.value)}/>
                             </Form.Group>
                         </Form>
-                        <Button onClick={HandlerLogIn}>Log In</Button>
+                        <Button onClick={()=>HandlerLogIn()}>Log In</Button>
                     </Card>
                 </Col>
             </Row>

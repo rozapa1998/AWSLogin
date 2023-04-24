@@ -9,11 +9,16 @@ const FormComponent = () => {
 
     //FIREBASE
     async function NuevaEntrada (nombredata, emaildata) {
+        
         try{
+            //Id random
+            let idGen = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            
             const docRef = await addDoc(collection(db, "usuarios"),{
                 nombre: nombredata,
                 email: emaildata,
-                ingresado: false
+                ingresado: false,
+                id: idGen
             })
         
             //Success alert
